@@ -15,44 +15,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButtonView: UIButton!
     
     
+    enum Lights {
+        case red
+        case yellow
+        case green
+        case off
+    }
+    var currentLight = Lights.red
+    var lightAlphaValues: [Lights: CGFloat] = [
+            .red: 0.3,
+            .yellow: 0.3,
+            .green: 0.3,
+            .off: 0.3
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        enum lights {
-            case red
-            case yellow
-            case green
-        }
-        var currentLight = lights.red
+        func setupLightViews() {
+                let lightViews = [redLightView, yellowLightView, greenLightView]
+                let cornerRadius = redLightView.frame.size.width / 2
+                lightViews.forEach { $0?.layer.cornerRadius = cornerRadius }
+                lightViews.forEach { $0?.alpha = lightAlphaValues[.off] ?? 0}
+            }
+        setupLightViews()
         
-        switch currentLight {
-        case .red:
-            redLightView.alpha = 1
-        case .yellow:
-            yellowLightView.alpha = 1
-        case .green:
-            greenLightView.alpha = 1
-        }
-        
-        
-        redLightView.layer.cornerRadius = redLightView.frame.size.width / 2
-        yellowLightView.layer.cornerRadius = yellowLightView.frame.size.width / 2
-        greenLightView.layer.cornerRadius = greenLightView.frame.size.width / 2
         startButtonView.layer.cornerRadius = 10
-        
-        redLightView.alpha = 0.3
-        yellowLightView.alpha = 0.3
-        greenLightView.alpha = 0.3
-        
-        startButtonView.setTitle("Start", for: .normal)
-        
     }
     
     @IBAction func changeTheColor() {
-        startButtonView.setTitle("Next", for: .normal)
-
+        UIView.animate(withDuration: 0.3) {
+            switch self.currentLight {
+            case .red:
+                self.redLightView.alpha = 1
+                self.startButtonView.setTitle("Next", for: .normal)
+                self.currentLight = .yellow
+            case .yellow:
+                self.redLightView.alpha = 0.3
+                self.yellowLightView.alpha = 1
+                self.currentLight = .green
+            case .green:
+                self.yellowLightView.alpha = 0.3
+                self.greenLightView.alpha = 1
+                self.currentLight = .off
+                self.startButtonView.setTitle("Finish", for: .normal)
+            case .off:
+                self.greenLightView.alpha = 0.3
+                self.startButtonView.setTitle("Start", for: .normal)
+                self.currentLight = .red
+            }
+        }
     }
-    
-    
-    
 }
