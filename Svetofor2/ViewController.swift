@@ -8,14 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var redLightView: UIView!
     @IBOutlet weak var yellowLightView: UIView!
     @IBOutlet weak var greenLightView: UIView!
     @IBOutlet weak var startButtonView: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        enum lights {
+            case red
+            case yellow
+            case green
+        }
+        var currentLight = lights.red
+        
+        switch currentLight {
+        case .red:
+            redLightView.alpha = 1
+        case .yellow:
+            yellowLightView.alpha = 1
+        case .green:
+            greenLightView.alpha = 1
+        }
+        
         
         redLightView.layer.cornerRadius = redLightView.frame.size.width / 2
         yellowLightView.layer.cornerRadius = yellowLightView.frame.size.width / 2
@@ -28,18 +46,13 @@ class ViewController: UIViewController {
         
         startButtonView.setTitle("Start", for: .normal)
         
-        
-        // Значение альфы для неактивного сигнала 0.3. Чтобы сделать корнерРадиус нужно сделать квадратные сигналы
     }
     
-    @IBAction func startButtonPressed() {
-        redLightView.alpha = 1
-        if redLightView.alpha == 1 {
-            startButtonView.setTitle("Next", for: .normal)
-        }
-        
-    }
-    
+    @IBAction func changeTheColor() {
+        startButtonView.setTitle("Next", for: .normal)
 
+    }
+    
+    
+    
 }
-

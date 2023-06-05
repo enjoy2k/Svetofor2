@@ -17,37 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-mm-Eqt">
-                                <rect key="frame" x="85" y="494" width="150" height="44"/>
+                                <rect key="frame" x="85" y="496" width="150" height="42"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="LbI-9a-rDM"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="changeTheColor" destination="BYZ-38-t0r" eventType="touchUpInside" id="853-zz-R6l"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-8H-Ask">
                                 <rect key="frame" x="100" y="50" width="120" height="402"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-Lc-LDV">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8Y8-Lc-LDV" secondAttribute="height" multiplier="1:1" id="oOF-dT-Yhq"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQg-3a-KiC">
                                         <rect key="frame" x="0.0" y="141" width="120" height="120"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="QJM-ff-xOv"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-ls-iYP">
                                         <rect key="frame" x="0.0" y="282" width="120" height="120"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -66,6 +68,12 @@
                             <constraint firstAttribute="bottom" secondItem="t5B-mm-Eqt" secondAttribute="bottom" constant="30" id="xIU-CF-EZC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="greenLightView" destination="Ele-ls-iYP" id="Jwg-u0-gk1"/>
+                        <outlet property="redLightView" destination="8Y8-Lc-LDV" id="Vy3-OL-LCZ"/>
+                        <outlet property="startButtonView" destination="t5B-mm-Eqt" id="yWB-Ea-9Ao"/>
+                        <outlet property="yellowLightView" destination="CQg-3a-KiC" id="X47-i9-rmd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,8 +81,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
