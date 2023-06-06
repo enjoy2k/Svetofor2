@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLightView: UIView!
     @IBOutlet weak var startButtonView: UIButton!
     
-    
     enum Lights {
         case red
         case yellow
